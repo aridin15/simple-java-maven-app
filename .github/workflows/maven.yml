@@ -44,7 +44,7 @@ jobs:
     - name: run docker image
       run: docker run arielamar/maven_java:latest
     - name: push docker image
-      run: sudo docker push arielamar/maven_java:latest
+      run: docker push arielamar/maven_java:latest
 
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
