@@ -1,0 +1,25 @@
+name: version bump
+on:
+  workflow_run:
+    workflows: [build]
+    types: [completed]
+
+jobs:
+  on-success:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - name: Bump Version
+        id: bump
+        uses: nnichols/maven-version-bump-action@v3
+        with:
+          github-token: ${{ secrets.github_token }}
+
+      - name: Print Version
+        run: "echo 'New Version: ${{steps.bump.outputs.version}}'"
+
+  on-failure:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+    steps:
+      - run: echo 'The triggering workflow failed'
