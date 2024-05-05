@@ -61,6 +61,9 @@ jobs:
     - name: push docker image
       run: docker push arielamar/maven_java:latest
 
+    - name: echo success
+      run: echo $github.event.workflow_run.conclusion
+
   version:
     needs: build
     runs-on: ubuntu-latest
