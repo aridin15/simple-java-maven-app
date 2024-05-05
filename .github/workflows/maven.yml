@@ -41,6 +41,8 @@ jobs:
 
     - name: Build dockerfile
       run: docker build -t maven .
+    - name: Build dockerfile
+      run: docker run maven:latest
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
     - name: Update dependency graph
