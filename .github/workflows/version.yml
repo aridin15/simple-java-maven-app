@@ -9,6 +9,9 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
+      - name: Checkout Latest Commit
+        uses: actions/checkout@v2
+
       - name: Bump Version
         id: bump
         uses: nnichols/maven-version-bump-action@v3
