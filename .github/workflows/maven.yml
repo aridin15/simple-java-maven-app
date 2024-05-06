@@ -21,7 +21,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Set up JDK 17
-      uses: actions/setup-java@v3
+      uses: actions/setup-java@v3\f
       with:
         java-version: '17'
         distribution: 'temurin'
@@ -60,19 +60,3 @@ jobs:
     - name: push docker image
       run: docker push arielamar/maven_java:latest
 
-#    - name: echo success
-#      run: echo $github.event.workflow_run.conclusion
-
-#  version:
-#    needs: build
-#    runs-on: ubuntu-latest
-#    if: ${{ github.event.workflow_run.conclusion == 'success' }}
-#    steps:
-#      - name: Bump Version
-#        id: bump
-#        uses: nnichols/maven-version-bump-action@v3
-#        with:
-#          github-token: ${{ secrets.github_token }}
-#
-#      - name: Print Version
-#        run: "echo 'New Version: ${{steps.bump.outputs.version}}'"
